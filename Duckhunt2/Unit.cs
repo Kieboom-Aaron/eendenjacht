@@ -58,7 +58,6 @@ namespace Duckhunt2
             DrawContainer.getInstance().Add(this);
             MoveContainer.getInstance().Add(this);
             CollisionContainer.getInstance().Add(this);
-            //c.Children.Add(_currentImage);
         }
 
         public void Accept(MoveVisitor mv, double delta)

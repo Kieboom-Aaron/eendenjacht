@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BlackDuck.cs" />
     <Compile Include="BlueDuck.cs" />
     <Compile Include="containers\CollisionContainer.cs" />
     <Compile Include="containers\DrawContainer.cs" />
@@ -138,6 +139,30 @@
     <Resource Include="images\blueduck\top_left_1.png" />
     <Resource Include="images\blueduck\top_left_2.png" />
     <Resource Include="images\blueduck\top_left_3.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\blackduck\bottom_left_1.png" />
+    <Resource Include="images\blackduck\bottom_left_2.png" />
+    <Resource Include="images\blackduck\bottom_left_3.png" />
+    <Resource Include="images\blackduck\bottom_right_1.png" />
+    <Resource Include="images\blackduck\bottom_right_2.png" />
+    <Resource Include="images\blackduck\bottom_right_3.png" />
+    <Resource Include="images\blackduck\left_1.png" />
+    <Resource Include="images\blackduck\left_2.png" />
+    <Resource Include="images\blackduck\left_3.png" />
+    <Resource Include="images\blackduck\right_1.png" />
+    <Resource Include="images\blackduck\right_2.png" />
+    <Resource Include="images\blackduck\right_3.png" />
+    <Resource Include="images\blackduck\top_1.png" />
+    <Resource Include="images\blackduck\top_2.png" />
+    <Resource Include="images\blackduck\top_3.png" />
+    <Resource Include="images\blackduck\top_left_1.png" />
+    <Resource Include="images\blackduck\top_left_2.png" />
+    <Resource Include="images\blackduck\top_left_3.png" />
+    <Resource Include="images\blackduck\top_right_1.png" />
+    <Resource Include="images\blackduck\top_right_2.png" />
+    <Resource Include="images\blackduck\top_right_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

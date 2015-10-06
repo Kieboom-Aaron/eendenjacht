@@ -23,6 +23,7 @@ namespace Duckhunt2
             c = canvas;
             isRunning = true;
             new BlueDuck(c);
+            new BlackDuck(c);
             bw = new BackgroundWorker();
             bw.ProgressChanged += bw_ProgressChanged;
             bw.WorkerReportsProgress = true;
