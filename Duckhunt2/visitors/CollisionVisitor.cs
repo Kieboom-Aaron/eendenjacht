@@ -24,9 +24,7 @@ namespace Duckhunt2.visitors
                     unit._y + unit._imageH < 0 ||
                     unit._y > unit._canvasH)
                 {
-                    MoveContainer.getInstance().Remove(unit);
-                    CollisionContainer.getInstance().Remove(unit);
-                    DrawContainer.getInstance().Remove(unit);
+                    die(unit);
                 }
             }
             else
@@ -52,6 +50,23 @@ namespace Duckhunt2.visitors
                     unit._direction = Directions.TOP_DIRECTIONS[r.Next(3)];
                 }
             }
+        }
+        public void Visit(ShootCollision co) {
+            
+            foreach(Unit unit in co.objects.ToList()) {
+                if(co.x >= unit._x && co.x <= (unit._x + unit._imageW) && //Check the horizontal collision
+                    co.y >= unit._y && co.y <= (unit._y + unit._imageH)){ //Check the vertical collision
+                        die(unit);
+                }
+            }
+            CollisionContainer.getInstance().Remove(co);
+        }
+
+        public void die(Unit unit) {
+            MoveContainer.getInstance().Remove(unit);
+            CollisionContainer.getInstance().Remove(unit);
+            DrawContainer.getInstance().Remove(unit);
+            UnitContainer.getInstance().Remove(unit);
         }
     }
 }

@@ -8,47 +8,63 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Duckhunt2.factories;
 
-namespace Duckhunt2
-{
-    class Game
-    {
+namespace Duckhunt2 {
+    class Game {
         BackgroundWorker bw;
-        Stopwatch s;
-        Canvas c;
+        Stopwatch stopwatch;
+        public Canvas canvas { get; private set; }
+        public InputHandler inputHandler { get; private set; }
         bool isRunning;
         double delta;
-        public Game(Canvas canvas)
-        {
-            c = canvas;
+        const int frameDelay = 17;
+
+        public UnitFactory unitFactory { get; private set; }
+
+        public Game(Canvas canvas) {
+            this.canvas = canvas;
             isRunning = true;
-            new BlueDuck(c);
-            new BlackDuck(c);
+            unitFactory = new UnitFactory(canvas);
+            unitFactory.Create("blueduck");
+            unitFactory.Create("blackduck");
+            inputHandler = new InputHandler(this, InputContainer.getInstance());
             bw = new BackgroundWorker();
             bw.ProgressChanged += bw_ProgressChanged;
             bw.WorkerReportsProgress = true;
             bw.DoWork += bw_DoWork;
-            s = new Stopwatch();
+            stopwatch = new Stopwatch();
             bw.RunWorkerAsync();
         }
 
-        void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (isRunning)
-            {
-                delta = s.ElapsedMilliseconds / 1000.0;
-                s.Reset();
-                s.Start();
+        void bw_DoWork(object sender, DoWorkEventArgs e) {
+            int lastElapsed = frameDelay;
+            while(isRunning) {
+                
+                long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+                
+                delta = elapsedMilliseconds / 1000.0;
+                stopwatch.Reset();
+                stopwatch.Start();
+                InputContainer.getInstance().Execute();
                 MoveContainer.getInstance().Move(delta);
                 CollisionContainer.getInstance().CheckCollision();
                 bw.ReportProgress(1);
-                Thread.Sleep(20);
+                int elapsed = (int)Math.Ceiling((decimal)elapsedMilliseconds);
+                
+                //The time the thread sleeps should be less if the tick took longer to run
+                int sleepTime = Math.Min(frameDelay, frameDelay - (lastElapsed - frameDelay));
+                //Can't wait less then 0 time
+                if(sleepTime < 0) {
+                    sleepTime = 0;
+                }
+                lastElapsed = elapsed;
+                Thread.Sleep(sleepTime);
             }
         }
 
-        void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            DrawContainer.getInstance().Draw(c, delta);
+        void bw_ProgressChanged(object sender, ProgressChangedEventArgs e) {
+            DrawContainer.getInstance().Draw(canvas, delta);
         }
     }
 }

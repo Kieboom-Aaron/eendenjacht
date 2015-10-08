@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Duckhunt2
 {
@@ -21,14 +22,20 @@ namespace Duckhunt2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Game game;
         public MainWindow()
         {
             InitializeComponent();
-            new Game(gameCanvas);
+            game = new Game(gameCanvas);
             //BitmapImage test = bd._imageSets[Directions.TOP, 0];
             //bd._currentImage.Source = test;
             //gameCanvas.Children.Add(bd._currentImage);
             
+        }
+
+        private void gameCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            e.Handled = true;
+            game.inputHandler.onLeftMouseDown();
         }
     }
 }

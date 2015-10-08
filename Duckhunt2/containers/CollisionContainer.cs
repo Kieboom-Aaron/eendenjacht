@@ -12,6 +12,7 @@ namespace Duckhunt2.containers
     {
         private List<CollisionObject> objects;
         private List<CollisionObject> removeStack;
+        private List<CollisionObject> addStack;
         private CollisionVisitor cv;
         private bool isRunning;
         private static CollisionContainer instance;
@@ -20,6 +21,7 @@ namespace Duckhunt2.containers
         {
             objects = new List<CollisionObject>();
             removeStack = new List<CollisionObject>();
+            addStack = new List<CollisionObject>();
             cv = new CollisionVisitor();
             isRunning = false;
         }
@@ -35,8 +37,12 @@ namespace Duckhunt2.containers
 
         public void Add(CollisionObject mo)
         {
-            objects.Add(mo);
-        }
+            if(isRunning) {
+                addStack.Add(mo);
+            } else {
+                objects.Add(mo);
+            }
+            } 
 
         public void Remove(CollisionObject mo)
         {
@@ -53,9 +59,10 @@ namespace Duckhunt2.containers
         public void CheckCollision()
         {
             isRunning = true;
-            foreach (CollisionObject mo in objects)
-            {
-                mo.Accept(cv);
+            lock(objects) {
+                foreach(CollisionObject mo in objects) {
+                        mo.Accept(cv);
+                }
             }
             isRunning = false;
             foreach (CollisionObject mo in removeStack)
@@ -63,6 +70,10 @@ namespace Duckhunt2.containers
                 objects.Remove(mo);
             }
             removeStack.Clear();
+            foreach(CollisionObject mo in addStack) {
+                objects.Add(mo);
+            }
+            addStack.Clear();
         }
     }
 }

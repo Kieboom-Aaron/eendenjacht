@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace Duckhunt2
 {
-    abstract class Unit: MoveableObject, DrawableObject, CollisionObject
+    abstract class Unit: MoveableObject, DrawableObject, CollisionObject, ICloneable
     {
         public double _x, _y;
         public double _canvasH, _canvasW;
@@ -55,9 +55,14 @@ namespace Duckhunt2
             _canvasH = c.Height;
             _canvasW = c.Width;
             _currentImage = new Image();
+            subscribe();
+        }
+
+        private void subscribe() { //Singleton anti-pattern :(
             DrawContainer.getInstance().Add(this);
             MoveContainer.getInstance().Add(this);
             CollisionContainer.getInstance().Add(this);
+            UnitContainer.getInstance().Add(this);
         }
 
         public void Accept(MoveVisitor mv, double delta)
@@ -92,6 +97,10 @@ namespace Duckhunt2
             _currentImage.Width = width;
             _imageH = height;
             _imageW = width;
+        }
+
+        public Object Clone() {
+            return this.MemberwiseClone();
         }
     }
 }
