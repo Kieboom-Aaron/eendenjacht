@@ -22,15 +22,22 @@ namespace Duckhunt2 {
         const int frameDelay = 17;
 
         public UnitFactory unitFactory { get; private set; }
+        public StateFactory stateFactory { get; private set; }
 
         public Game(Canvas canvas) {
             this.canvas = canvas;
             isRunning = true;
             unitFactory = new UnitFactory(canvas);
-            TextDisplay scoreField = new TextDisplay(600, 10, "0", Colors.Yellow, 30);
-            unitFactory.Create("blueduck");
-            unitFactory.Create("blackduck");
+            stateFactory = new StateFactory();
+            Score.getInstance();
             inputHandler = new InputHandler(this, InputContainer.getInstance());
+
+            Dictionary<string, int> units = new Dictionary<string,int>();
+            units.Add("blueduck", 5);
+            units.Add("blackduck", 5);
+            Round round = new Round("Ronde 1", units, this);
+            round.start();
+
             bw = new BackgroundWorker();
             bw.ProgressChanged += bw_ProgressChanged;
             bw.WorkerReportsProgress = true;

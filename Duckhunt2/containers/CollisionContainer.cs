@@ -74,6 +74,7 @@ namespace Duckhunt2.containers
                 objects.Add(mo);
             }
             addStack.Clear();
+
         }
     }
 }

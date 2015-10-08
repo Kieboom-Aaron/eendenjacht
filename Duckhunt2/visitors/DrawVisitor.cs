@@ -25,5 +25,10 @@ namespace Duckhunt2.visitors
                 }
             }
         }
+
+        public void Visit(TextDisplay td, double delta)
+        {
+            td.textBlock.Text = td.text;
+        }
     }
 }

@@ -22,7 +22,6 @@ namespace Duckhunt2.containers {
         }
 
         public void Add(Unit obj){
-            //TODO: should we use lock(objects) everywhere?
             objects.Add(obj);
         }
 

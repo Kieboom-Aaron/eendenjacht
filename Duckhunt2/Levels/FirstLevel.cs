@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Duckhunt2.Levels {
     class FirstLevel : Level {
-        private LevelState state;
         //private List<>
 
         public FirstLevel() {

@@ -14,13 +14,15 @@ namespace Duckhunt2
 {
     class TextDisplay : DrawableObject
     {
-        private TextBlock textBlock;
+        public TextBlock textBlock;
+        public String text;
         public TextDisplay(int x, int y, String text, Color c, int size)
         {
 
             textBlock = new TextBlock();
             textBlock.FontFamily = new FontFamily("Arial");
             textBlock.FontSize = size;
+            this.text = text;
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(c);
             Canvas.SetLeft(textBlock, x);
@@ -30,7 +32,7 @@ namespace Duckhunt2
 
         public void Accept(DrawVisitor dv, double delta)
         {
-            //not needed automatich updating
+            dv.Visit(this, delta);
         }
 
         public UIElement getDrawable()
@@ -40,7 +42,7 @@ namespace Duckhunt2
 
         public void setText(String text)
         {
-            textBlock.Text = text;
+            this.text = text;
         }
     }
 }

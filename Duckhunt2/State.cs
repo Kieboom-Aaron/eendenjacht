@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Duckhunt2 {
-    interface LevelState {
-        //void 
+    interface State {
+        void doAction(Game game);
+        State Clone();
     }
 }

@@ -10,14 +10,20 @@ namespace Duckhunt2 {
     class InputHandler {
         private InputContainer inputContainer;
         private Game game;
+        private State state;
         public InputHandler(Game game, InputContainer inputContainer) {
             this.inputContainer = inputContainer;
             this.game = game;
+            state = game.stateFactory.create("notinroundstate");
         }
 
         public void onLeftMouseDown() {
             //TODO: If state == in round && player has bullets etc
-            inputContainer.Add(new ShootInput(game, UnitContainer.getInstance().objects));
+            state.doAction(game);
+        }
+
+        public void setState(string id) {
+            state = game.stateFactory.create(id);
         }
 
     }

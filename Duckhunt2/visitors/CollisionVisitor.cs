@@ -57,6 +57,7 @@ namespace Duckhunt2.visitors
                 if(co.x >= unit._x && co.x <= (unit._x + unit._imageW) && //Check the horizontal collision
                     co.y >= unit._y && co.y <= (unit._y + unit._imageH)){ //Check the vertical collision
                         die(unit);
+                        Score.getInstance().addPoint();
                 }
             }
             CollisionContainer.getInstance().Remove(co);
