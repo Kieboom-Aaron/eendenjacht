@@ -50,7 +50,7 @@ namespace Duckhunt2.containers
             foreach (DrawableObject mo in addStack)
             {
                 objects.Add(mo);
-                c.Children.Add(mo.getImage());
+                c.Children.Add(mo.getDrawable());
             }
             addStack.Clear();
             foreach (DrawableObject mo in objects)
@@ -61,7 +61,7 @@ namespace Duckhunt2.containers
             foreach (DrawableObject mo in removeStack)
             {
                 objects.Remove(mo);
-                c.Children.Remove(mo.getImage());
+                c.Children.Remove(mo.getDrawable());
             }
             removeStack.Clear();
         }

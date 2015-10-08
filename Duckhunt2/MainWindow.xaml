@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Duckhunt2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow"  Height="388" Width="640">
+        Title="MainWindow"  Height="415" Width="648">
     <Canvas Width="640" Height="375" Name="gameCanvas" MouseLeftButtonDown="gameCanvas_MouseLeftButtonDown">
         <Canvas.Background>
             <ImageBrush ImageSource="images/stage.bmp"/>

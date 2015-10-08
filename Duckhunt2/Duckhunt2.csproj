@@ -72,6 +72,7 @@
     <Compile Include="objects\CollisionObject.cs" />
     <Compile Include="objects\DrawableObject.cs" />
     <Compile Include="objects\InputObject.cs" />
+    <Compile Include="TextDisplay.cs" />
     <Compile Include="Round.cs" />
     <Compile Include="ShootCollision.cs" />
     <Compile Include="State.cs" />

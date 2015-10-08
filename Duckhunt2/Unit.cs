@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -86,7 +87,7 @@ namespace Duckhunt2
             _dioSpeed = (int)Math.Sqrt(speed * speed / 2);
         }
 
-        public Image getImage()
+        public UIElement getDrawable()
         {
             return _currentImage;
         }
