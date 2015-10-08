@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using Duckhunt2.containers;
 using Duckhunt2.factories;
 
@@ -21,6 +22,7 @@ namespace Duckhunt2 {
 
         public void start() {
             game.inputHandler.setState("duringroundstate");
+            new TimedTextDisplay(270, 150, name, Colors.Yellow, 30, 3);
             //Display name (pre-round)
             //Spawn units (during round)
             foreach(KeyValuePair<string, int> entry in units) {

@@ -15,14 +15,16 @@ namespace Duckhunt2
     class TextDisplay : DrawableObject
     {
         private TextBlock textBlock;
-        public TextDisplay()
+        public TextDisplay(int x, int y, String text, Color c, int size)
         {
 
             textBlock = new TextBlock();
-            textBlock.Text = "testtext";
-            textBlock.Foreground = new SolidColorBrush(Colors.Red);
-            Canvas.SetLeft(textBlock, 100);
-            Canvas.SetTop(textBlock, 100);
+            textBlock.FontFamily = new FontFamily("Arial");
+            textBlock.FontSize = size;
+            textBlock.Text = text;
+            textBlock.Foreground = new SolidColorBrush(c);
+            Canvas.SetLeft(textBlock, x);
+            Canvas.SetTop(textBlock, y);
             DrawContainer.getInstance().Add(this);
         }
 

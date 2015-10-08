@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Duckhunt2.factories;
+using System.Windows.Media;
 
 namespace Duckhunt2 {
     class Game {
@@ -28,12 +29,14 @@ namespace Duckhunt2 {
             isRunning = true;
             unitFactory = new UnitFactory(canvas);
             stateFactory = new StateFactory();
-            TextDisplay td = new TextDisplay();
-            td.setText("conflict");
+
+            TextDisplay scoreField = new TextDisplay(600, 10, "0", Colors.Yellow, 30);
+
             inputHandler = new InputHandler(this, InputContainer.getInstance());
 
             Dictionary<string, int> units = new Dictionary<string,int>();
             units.Add("blueduck", 5);
+            units.Add("blackduck", 5);
             Round round = new Round("Ronde 1", units, this);
             round.start();
 
