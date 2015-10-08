@@ -60,7 +60,8 @@
     <Compile Include="containers\InputContainer.cs" />
     <Compile Include="containers\MoveContainer.cs" />
     <Compile Include="containers\UnitContainer.cs" />
-    <Compile Include="factories\RoundFactory.cs" />
+    <Compile Include="DuringRoundState.cs" />
+    <Compile Include="factories\StateFactory.cs" />
     <Compile Include="Levels\FirstLevel.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="factories\LevelFactory.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="ImageFactory.cs" />
     <Compile Include="InputHandler.cs" />
     <Compile Include="inputs\ShootInput.cs" />
+    <Compile Include="NotInRoundState.cs" />
     <Compile Include="objects\CollisionObject.cs" />
     <Compile Include="objects\DrawableObject.cs" />
     <Compile Include="objects\InputObject.cs" />

@@ -23,7 +23,7 @@ namespace Duckhunt2.factories {
         public Unit Create(String id) {
             Unit proto = units[id];
             if(proto != null) {
-                return (Unit)proto.Clone();
+                return proto.Clone();
             } else {
                 Debug.Fail("Not a valid id: " + id);
                 return null;
