@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Duckhunt2.factories;
+using System.Windows.Media;
 
 namespace Duckhunt2 {
     class Game {
@@ -26,8 +27,7 @@ namespace Duckhunt2 {
             this.canvas = canvas;
             isRunning = true;
             unitFactory = new UnitFactory(canvas);
-            TextDisplay td = new TextDisplay();
-            td.setText("hadshfjalkdfjkasdf");
+            TextDisplay scoreField = new TextDisplay(600, 10, "0", Colors.Yellow, 30);
             unitFactory.Create("blueduck");
             unitFactory.Create("blackduck");
             inputHandler = new InputHandler(this, InputContainer.getInstance());
