@@ -26,6 +26,8 @@ namespace Duckhunt2 {
             this.canvas = canvas;
             isRunning = true;
             unitFactory = new UnitFactory(canvas);
+            TextDisplay td = new TextDisplay();
+            td.setText("hadshfjalkdfjkasdf");
             unitFactory.Create("blueduck");
             unitFactory.Create("blackduck");
             inputHandler = new InputHandler(this, InputContainer.getInstance());
