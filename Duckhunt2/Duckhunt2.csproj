@@ -53,37 +53,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BlackDuck.cs" />
-    <Compile Include="BlueDuck.cs" />
+    <Compile Include="factories\UnitStateFactory.cs" />
+    <Compile Include="rounds\FirstRound.cs" />
+    <Compile Include="rounds\SecondRound.cs" />
+    <Compile Include="states\AliveUnitState.cs" />
+    <Compile Include="states\DeadUnitState.cs" />
+    <Compile Include="states\UnitState.cs" />
+    <Compile Include="states\WaitingRoundState.cs" />
+    <Compile Include="units\BlackDuck.cs" />
+    <Compile Include="units\BlueDuck.cs" />
     <Compile Include="containers\CollisionContainer.cs" />
     <Compile Include="containers\DrawContainer.cs" />
     <Compile Include="containers\InputContainer.cs" />
     <Compile Include="containers\MoveContainer.cs" />
     <Compile Include="containers\UnitContainer.cs" />
-    <Compile Include="DuringRoundState.cs" />
+    <Compile Include="states\DuringRoundState.cs" />
     <Compile Include="factories\StateFactory.cs" />
-    <Compile Include="Levels\FirstLevel.cs" />
-    <Compile Include="Levels\Level.cs" />
-    <Compile Include="factories\LevelFactory.cs" />
     <Compile Include="factories\UnitFactory.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="ImageFactory.cs" />
     <Compile Include="InputHandler.cs" />
     <Compile Include="inputs\ShootInput.cs" />
-    <Compile Include="NotInRoundState.cs" />
+    <Compile Include="states\NotInRoundState.cs" />
     <Compile Include="objects\CollisionObject.cs" />
     <Compile Include="objects\DrawableObject.cs" />
     <Compile Include="objects\InputObject.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="SingletonRandom.cs" />
     <Compile Include="TextDisplay.cs" />
-    <Compile Include="Round.cs" />
+    <Compile Include="rounds\Round.cs" />
     <Compile Include="ShootCollision.cs" />
-    <Compile Include="State.cs" />
+    <Compile Include="states\RoundState.cs" />
     <Compile Include="TimedTextDisplay.cs" />
     <Compile Include="visitors\CollisionVisitor.cs" />
     <Compile Include="visitors\DrawVisitor.cs" />
-    <Compile Include="Unit.cs" />
+    <Compile Include="units\Unit.cs" />
     <Compile Include="objects\MoveableObject.cs" />
     <Compile Include="Directions.cs" />
     <Compile Include="visitors\MoveVisitor.cs" />
@@ -159,7 +163,11 @@
     <Resource Include="images\blueduck\top_left_2.png" />
     <Resource Include="images\blueduck\top_left_3.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\blackduck\bottom_1.png" />
+    <Resource Include="images\blackduck\bottom_2.png" />
+    <Resource Include="images\blackduck\bottom_3.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\blackduck\bottom_left_1.png" />
     <Resource Include="images\blackduck\bottom_left_2.png" />
@@ -182,6 +190,11 @@
     <Resource Include="images\blackduck\top_right_1.png" />
     <Resource Include="images\blackduck\top_right_2.png" />
     <Resource Include="images\blackduck\top_right_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\blueduck\bottom_1.png" />
+    <Resource Include="images\blueduck\bottom_2.png" />
+    <Resource Include="images\blueduck\bottom_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

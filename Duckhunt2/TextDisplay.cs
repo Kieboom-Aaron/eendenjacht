@@ -16,20 +16,30 @@ namespace Duckhunt2
     {
         public TextBlock textBlock;
         public String text;
+        public int x, y, size;
+        public Color color;
         public TextDisplay(int x, int y, String text, Color c, int size)
         {
-
-            textBlock = new TextBlock();
-            textBlock.FontFamily = new FontFamily("Arial");
-            textBlock.FontSize = size;
             this.text = text;
-            textBlock.Text = text;
-            textBlock.Foreground = new SolidColorBrush(c);
-            Canvas.SetLeft(textBlock, x);
-            Canvas.SetTop(textBlock, y);
+            this.size = size;
+            this.y = y;
+            this.x = x;
+            this.color = c;
             DrawContainer.getInstance().Add(this);
         }
 
+
+        public void init()
+        {
+            textBlock = new TextBlock();
+            textBlock.FontFamily = new FontFamily("Arial");
+            textBlock.FontSize = size;
+
+            textBlock.Text = text;
+            textBlock.Foreground = new SolidColorBrush(color);
+            Canvas.SetLeft(textBlock, x);
+            Canvas.SetTop(textBlock, y);
+        }
         public void Accept(DrawVisitor dv, double delta)
         {
             dv.Visit(this, delta);

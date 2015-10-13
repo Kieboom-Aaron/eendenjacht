@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using Duckhunt2.factories;
 using System.Windows.Media;
+using Duckhunt2.rounds;
 
 namespace Duckhunt2 {
     class Game {
@@ -20,23 +21,20 @@ namespace Duckhunt2 {
         bool isRunning;
         double delta;
         const int frameDelay = 17;
-
+        public Round currentRound { get; set; }
         public UnitFactory unitFactory { get; private set; }
-        public StateFactory stateFactory { get; private set; }
+        public RoundStateFactory stateFactory { get; private set; }
 
         public Game(Canvas canvas) {
             this.canvas = canvas;
             isRunning = true;
             unitFactory = new UnitFactory(canvas);
-            stateFactory = new StateFactory();
+            stateFactory = new RoundStateFactory();
             Score.getInstance();
             inputHandler = new InputHandler(this, InputContainer.getInstance());
 
-            Dictionary<string, int> units = new Dictionary<string,int>();
-            units.Add("blueduck", 5);
-            units.Add("blackduck", 5);
-            Round round = new Round("Ronde 1", units, this);
-            round.start();
+            //create rounds
+            createRounds();
 
             bw = new BackgroundWorker();
             bw.ProgressChanged += bw_ProgressChanged;
@@ -74,6 +72,14 @@ namespace Duckhunt2 {
 
         void bw_ProgressChanged(object sender, ProgressChangedEventArgs e) {
             DrawContainer.getInstance().Draw(canvas, delta);
+        }
+
+        private void createRounds()
+        {
+            Round r1 = new FirstRound(this);
+            Round r2 = new SecondRound(this);
+            r1.nextRound = r2;
+            r1.start();
         }
     }
 }

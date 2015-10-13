@@ -12,6 +12,7 @@ namespace Duckhunt2.objects
     interface DrawableObject
     {
         void Accept(DrawVisitor dv, double delta);
+        void init();
         UIElement getDrawable();
     }
 }

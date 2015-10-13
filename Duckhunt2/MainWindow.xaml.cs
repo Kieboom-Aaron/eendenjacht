@@ -27,10 +27,6 @@ namespace Duckhunt2
         {
             InitializeComponent();
             game = new Game(gameCanvas);
-            //BitmapImage test = bd._imageSets[Directions.TOP, 0];
-            //bd._currentImage.Source = test;
-            //gameCanvas.Children.Add(bd._currentImage);
-            
         }
 
         private void gameCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {

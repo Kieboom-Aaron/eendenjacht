@@ -37,7 +37,9 @@ namespace Duckhunt2
             blueDuckImages[Directions.TOP_LEFT, 0] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blueduck/top_left_1.png", UriKind.Relative));
             blueDuckImages[Directions.TOP_LEFT, 1] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blueduck/top_left_2.png", UriKind.Relative));
             blueDuckImages[Directions.TOP_LEFT, 2] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blueduck/top_left_3.png", UriKind.Relative));
-            //TODO add bottom
+            blueDuckImages[Directions.BOTTOM, 0] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blueduck/bottom_1.png", UriKind.Relative));
+            blueDuckImages[Directions.BOTTOM, 1] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blueduck/bottom_2.png", UriKind.Relative));
+            blueDuckImages[Directions.BOTTOM, 2] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blueduck/bottom_3.png", UriKind.Relative));
             blackDuckImages = new BitmapImage[8, 3];
             blackDuckImages[Directions.TOP, 0] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/top_1.png", UriKind.Relative));
             blackDuckImages[Directions.TOP, 1] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/top_2.png", UriKind.Relative));
@@ -60,7 +62,9 @@ namespace Duckhunt2
             blackDuckImages[Directions.TOP_LEFT, 0] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/top_left_1.png", UriKind.Relative));
             blackDuckImages[Directions.TOP_LEFT, 1] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/top_left_2.png", UriKind.Relative));
             blackDuckImages[Directions.TOP_LEFT, 2] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/top_left_3.png", UriKind.Relative));
-            //TODO add bottom
+            blackDuckImages[Directions.BOTTOM, 0] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/bottom_1.png", UriKind.Relative));
+            blackDuckImages[Directions.BOTTOM, 1] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/bottom_2.png", UriKind.Relative));
+            blackDuckImages[Directions.BOTTOM, 2] = new BitmapImage(new Uri(@"/Duckhunt2;component/images/blackduck/bottom_3.png", UriKind.Relative));
         }
 
         public static ImageFactory getInstance()

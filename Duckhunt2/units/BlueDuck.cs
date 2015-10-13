@@ -15,7 +15,7 @@ namespace Duckhunt2
         {
             setSpeed(100);
             _imageInterval = 0.25;
-            _maxCollisions = 3;
+            _maxCollisions = 4;
             _imageSets = ImageFactory.getInstance().blueDuckImages;
             setImageDimentions(29, 29);
             generateStartPos(c);

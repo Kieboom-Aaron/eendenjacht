@@ -20,10 +20,10 @@ namespace Duckhunt2.factories {
             units.Add("blackduck", new BlackDuck(c));
             units.Add("blueduck", new BlueDuck(c));
         }
-        public Unit Create(String id) {
+        public Unit Create(String id, Round r) {
             Unit proto = units[id];
             if(proto != null) {
-                return proto.Clone();
+                return proto.Clone(r);
             } else {
                 Debug.Fail("Not a valid id: " + id);
                 return null;

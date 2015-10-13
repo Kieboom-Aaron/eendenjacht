@@ -1,5 +1,7 @@
 ﻿using Duckhunt2.containers;
+using Duckhunt2.factories;
 using Duckhunt2.objects;
+using Duckhunt2.states;
 using Duckhunt2.visitors;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,8 @@ namespace Duckhunt2
         public double _canvasH, _canvasW;
         public double _imageH, _imageW;
         public int _direction;
+        public UnitState state;
+        public Round _currentRound { get; private set; }
         public int _speed { get; private set; }
         public int _dioSpeed { get; private set; }
         public BitmapImage[,] _imageSets;
@@ -59,10 +63,12 @@ namespace Duckhunt2
         }
 
         public void subscribe() { //Singleton anti-pattern :(
+            state = UnitStateFactory.Instance.create("unit-alive");
             DrawContainer.getInstance().Add(this);
             MoveContainer.getInstance().Add(this);
             CollisionContainer.getInstance().Add(this);
             UnitContainer.getInstance().Add(this);
+            _currentRound.registerUnit(this);
         }
 
         public void Accept(MoveVisitor mv, double delta)
@@ -99,10 +105,14 @@ namespace Duckhunt2
             _imageW = width;
         }
 
-        public Unit Clone() {
+        public Unit Clone(Round r) {
             Unit clone = (Unit)this.MemberwiseClone();
-            clone._currentImage = _currentImage = new Image();
+            clone._currentRound = r;
             return clone;
+        }
+
+        public void init() {
+            this._currentImage = _currentImage = new Image();
         }
     }
 }

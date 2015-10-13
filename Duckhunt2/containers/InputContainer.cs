@@ -46,10 +46,8 @@ namespace Duckhunt2.containers {
 
         public void Execute() {
             isRunning = true;
-            lock(objects) { //TODO: Keep this?
-                foreach(InputObject input in objects) {
-                    input.Execute();
-                }
+            foreach(InputObject input in objects) {
+                input.Execute();
             }
             objects.Clear();
             isRunning = false;

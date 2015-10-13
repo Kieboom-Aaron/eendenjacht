@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Duckhunt2 {
-    interface State {
+    interface RoundState {
         void doAction(Game game);
-        State Clone();
+
+        void spawnUnits(Round r, double delta);
+        RoundState Clone();
     }
 }

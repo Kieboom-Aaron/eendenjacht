@@ -12,6 +12,7 @@ namespace Duckhunt2.containers
     {
         private List<MoveableObject> objects;
         private List<MoveableObject> removeStack;
+        private List<MoveableObject> addStack;
         private MoveVisitor mv;
         private bool isRunning;
         private static MoveContainer instance;
@@ -20,6 +21,7 @@ namespace Duckhunt2.containers
         {
             objects = new List<MoveableObject>();
             removeStack = new List<MoveableObject>();
+            addStack = new List<MoveableObject>();
             mv = new MoveVisitor();
             isRunning = false;
         }
@@ -35,7 +37,14 @@ namespace Duckhunt2.containers
 
         public void Add(MoveableObject mo)
         {
-            objects.Add(mo);
+            if (isRunning)
+            {
+                addStack.Add(mo);
+            }
+            else
+            {
+                objects.Add(mo);
+            }
         }
 
         public void Remove(MoveableObject mo)
@@ -52,6 +61,11 @@ namespace Duckhunt2.containers
 
         public void Move(double delta)
         {
+            foreach (MoveableObject mo in addStack)
+            {
+                objects.Add(mo);
+            }
+            addStack.Clear();
             isRunning = true;
             foreach (MoveableObject mo in objects)
             {

@@ -1,4 +1,5 @@
 ﻿using Duckhunt2.containers;
+using Duckhunt2.factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace Duckhunt2.visitors
                 {
                     die(unit);
                 }
+            }
+            else if (unit._maxCollisions == 1)
+            {
+                unit._maxCollisions--;
+                unit._direction = Directions.TOP;
             }
             else
             {
@@ -56,7 +62,8 @@ namespace Duckhunt2.visitors
             foreach(Unit unit in co.objects.ToList()) {
                 if(co.x >= unit._x && co.x <= (unit._x + unit._imageW) && //Check the horizontal collision
                     co.y >= unit._y && co.y <= (unit._y + unit._imageH)){ //Check the vertical collision
-                        die(unit);
+                        unit.state = UnitStateFactory.Instance.create("unit-dead");
+                        unit._maxCollisions = 0;
                         Score.getInstance().addPoint();
                 }
             }
@@ -68,6 +75,7 @@ namespace Duckhunt2.visitors
             CollisionContainer.getInstance().Remove(unit);
             DrawContainer.getInstance().Remove(unit);
             UnitContainer.getInstance().Remove(unit);
+            unit._currentRound.removeUnit(unit);
         }
     }
 }

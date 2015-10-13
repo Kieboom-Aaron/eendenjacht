@@ -4,23 +4,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Duckhunt2.states;
 
 namespace Duckhunt2.factories {
-    class StateFactory {
-        private Dictionary<string, State> states;
+    class RoundStateFactory {
+        private Dictionary<string, RoundState> states;
 
-        public StateFactory() {
-            states = new Dictionary<string, State>();
+        public RoundStateFactory() {
+            states = new Dictionary<string, RoundState>();
             fillDictionary();
         }
 
         private void fillDictionary() {
-            states.Add("notinroundstate", new NotInRoundState());
-            states.Add("duringroundstate", new DuringRoundState());
+            states.Add("round-notactive", new NotInRoundState());
+            states.Add("round-active", new DuringRoundState());
+            states.Add("round-waiting", new WaitingRoundState());
         }
 
-        public State create(string id) {
-            State proto = states[id];
+        public RoundState create(string id) {
+            RoundState proto = states[id];
             if(proto != null) {
                 return proto.Clone();
             } else {
@@ -28,6 +30,5 @@ namespace Duckhunt2.factories {
                 return null;
             }
         }
-
     }
 }
